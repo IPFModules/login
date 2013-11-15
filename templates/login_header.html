@@ -1,0 +1,10 @@
+<div class="login_headertable">
+	<{if $login_module_home}>
+	<span class="login_modulename"><{$login_module_home}></span>
+	<{/if}>
+	<{if $login_category_path}>
+	<span class="login_breadcrumb"><{if $login_module_home}>&gt;<{/if}><{$login_category_path}></span>
+	<{/if}>
+</div>
+
+<div id="login_submit" style="clear: both;"><{if $login_showSubmitLink && $login_userCanSubmit}><a href="<{$login_url}>post.php?op=mod"><{$smarty.const._MI_LOGIN_POST_ADD}></a><{/if}></div>
