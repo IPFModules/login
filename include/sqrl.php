@@ -21,7 +21,8 @@ $nonce = '';
 if(function_exists('openssl_random_pseudo_bytes')) {
 	$nonce = base64_encode(openssl_random_pseudo_bytes(128, $strong));
 	if($strong == TRUE) {
-		$nonce = substr($nonce, 0, 128); // base64 is about 33% longer, so we need to truncate the result
+		// Need to truncate the result as base64 is about 1/3rd longer
+		$nonce = substr($nonce, 0, 128);
 	} else {
 		echo _MB_LOGIN_WEAK_ALGORITHM_ERROR;
 		exit;
@@ -30,5 +31,6 @@ if(function_exists('openssl_random_pseudo_bytes')) {
 	echo _MB_LOGIN_OPEN_SSL_REQUIRED_ERROR;
 	exit;
 }
+// Target URL for processing challenge responses
 $url = ICMS_URL . '/modules/login/sqrl.php?nonce=' . $nonce;
 QRcode::png($url, FALSE, "H", 4, 4);
