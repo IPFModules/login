@@ -13,7 +13,8 @@
  * @version		$Id$
  */
 
-// Include QR code library (must support at least version 13, which can hold 259 alpha-numeric characters with high quality error correction)
+// Include QR code library (must support at least version 13, which can hold 259 alpha-numeric 
+// characters with high quality error correction)
 include "phpqrcode/qrlib.php";
 
 // Generate a QR code containing i) the site URL for processing SQRL and ii) a nonce
