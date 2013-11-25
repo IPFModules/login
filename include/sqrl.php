@@ -32,6 +32,9 @@ if(function_exists('openssl_random_pseudo_bytes')) {
 	echo _MB_LOGIN_OPEN_SSL_REQUIRED_ERROR;
 	exit;
 }
-// Target URL for processing challenge responses
-$url = ICMS_URL . '/modules/login/sqrl.php?nonce=' . $nonce;
+// Target URL for processing challenge responses - must use protocol sqrl://
+$url = ICMS_URL . '/modules/login/sqrlauth.php?nut=' . $nonce 
+		. '&amp;sqrlver=1'
+		. '&amp;';
+$url = str_replace('http', 'sqrl', $url);
 QRcode::png($url, FALSE, "H", 4, 4);
